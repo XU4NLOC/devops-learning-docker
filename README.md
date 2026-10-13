@@ -1,35 +1,30 @@
 # DevOps 30-Minute Learning Log
 
-**Day: 12 October 2026**  
-**Topic: Dockerize a Java Springboot Application**  
+**Day: 13 October 2026**  
+**Topic: Dockerize a NextJS Application**  
 
 **Task completed:**  
-- Created a Java Springboot application via Spring initializer
-- Configured Java version, Spring CLI and dependencies
-- Successfully build the Sringboot Application and run in localhost:8080
-- Create a Dockerfile, reviewed and create Docker compose
-- Successfully build the Docker image and run the container
-- The container runs in localhost:8080
+- Initialized NextJS frontend application
+- Built and ran the frontend locally
+- Created Dockerfile, compose.yaml
+- Created image and ran the container, the frontend run successfully
 
 **Commands and configuration:**  
-- brew upgrade && brew update
-- java -version (if not available -> install java)
-- brew install openjdk
-- brew install maven
-- brew tap spring-io/tap && brew install spring-boot
-- Run the application: mvn springboot:run
-- Create Docker file using docker init
+- Create NextJS app via npx create-next-app@latest
+- Run npm install and npm run build
+- Run npm start to view the frontend locally
+- docker init to create the Dockerfile
+- Configure standalone in next.config.ts
 - Review and reconfigured the Dockerfile
-
+- Build image: docker build -t next-frontend .
+- Run the container: docker run -p 3000:3000 next-frontend
 
 **Problem encountered:**  
-- Dockerfile created from docker init command failed to build image, the problem was Unsupported jarmode 'layertools' (this is a problem when using docker init command, remember to review and fix the Dockerfile)
-- Created a new Dockerfile and still failed because in pom.xml indicate java version 25 while Dockerfile indicate 17
+- When first run the frontend after containerized it, the NextJS icon did not show, root cause was the Dockerfile did not copy the public directory from the frontend code folder
 
 **My takeaway:**  
-In this session I revised my knowledge about initializing Java Springboot application
-Revised knowledge about Docker and carefully check configuration files for correct versions.
-
+- After today session I revised my knowledge about creating NextJS application, containerizing a frontend app
+- Remember to configure standalone in next.config.ts, copy the asset carefully in Dockerfile
 
 **Next action:**  
-Dockerize React frontend application
+Dockerize a full-stack application
